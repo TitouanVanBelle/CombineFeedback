@@ -27,7 +27,7 @@ public final class Context<State, Event>: ObservableObject {
     }
     
     public subscript<U>(dynamicMember keyPath: KeyPath<State, U>) -> U {
-        return state[keyPath: keyPath]
+        state[keyPath: keyPath]
     }
     
     public func send(event: Event) {
@@ -68,7 +68,7 @@ public final class Context<State, Event>: ObservableObject {
     }
     
     public func binding<U>(for keyPath: KeyPath<State, U>, event: @escaping (U) -> Event) -> Binding<U> {
-        return Binding(
+        Binding(
             get: {
                 self.state[keyPath: keyPath]
             },
@@ -79,7 +79,7 @@ public final class Context<State, Event>: ObservableObject {
     }
     
     public func binding<U>(for keyPath: KeyPath<State, U>, event: Event) -> Binding<U> {
-        return Binding(
+        Binding(
             get: {
                 self.state[keyPath: keyPath]
             },
@@ -90,7 +90,7 @@ public final class Context<State, Event>: ObservableObject {
     }
     
     public func binding<U>(for keyPath: WritableKeyPath<State, U>) -> Binding<U> {
-        return Binding(
+        Binding(
             get: {
                 self.state[keyPath: keyPath]
             },
@@ -99,10 +99,20 @@ public final class Context<State, Event>: ObservableObject {
             }
         )
     }
+
+    public func binding<U>(for keyPath: WritableKeyPath<State, U>, whenSetting block: @escaping (U) -> Void) -> Binding<U> {
+        Binding(
+            get: {
+                self.state[keyPath: keyPath]
+            },
+            set: {
+                self.mutate(Mutation(keyPath: keyPath, value: $0))
+                block($0)
+            }
+        )
+    }
     
     public func action(for event: Event) -> () -> Void {
-        return {
-            self.send(event: event)
-        }
+        { self.send(event: event) }
     }
 }

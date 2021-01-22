@@ -290,17 +290,17 @@
 		5800FF9222A89BE6005A860B /* CombineFeedback */ = {
 			isa = PBXGroup;
 			children = (
+				58751A9523EC823C00EEF398 /* Atomic.swift */,
 				5800FF9322A89BE6005A860B /* CombineFeedback.h */,
 				5800FFAA22A89C08005A860B /* Feedback.swift */,
-				58751A9923ECBCA000EEF398 /* FeedbackLoop.swift */,
 				58751A9123EC814500EEF398 /* FeedbackEventConsumer.swift */,
-				58751A9323EC819A00EEF398 /* Floodgate.swift */,
-				58751A9723EC82D400EEF398 /* NSLockExtensions.swift */,
+				58751A9923ECBCA000EEF398 /* FeedbackLoop.swift */,
 				5800FFAB22A89C08005A860B /* FlatMapLatest.swift */,
-				58751A9523EC823C00EEF398 /* Atomic.swift */,
-				5800FFAC22A89C08005A860B /* System.swift */,
+				58751A9323EC819A00EEF398 /* Floodgate.swift */,
 				5800FF9422A89BE6005A860B /* Info.plist */,
+				58751A9723EC82D400EEF398 /* NSLockExtensions.swift */,
 				585CD878239AC7D3004BE9CC /* Reducer.swift */,
+				5800FFAC22A89C08005A860B /* System.swift */,
 			);
 			path = CombineFeedback;
 			sourceTree = "<group>";
